@@ -9,9 +9,10 @@ public class file {
 
 	/**
 	 * Readfile.
-	 * 
-	 * @param a
-	 *            the a
+	 *
+	 * @param string line as string to break into string tokener
+	 * @param last the last word in the string
+	 * @return the string
 	 */
 	public static String compare(String line, String last) {
 		int i = 0;
@@ -51,9 +52,14 @@ public class file {
 		}
 
 		last = result[total - 1];
-		return last;
+		return last;// pass the string value to readfile function
 	}
 
+	/**
+	 * Readfile.
+	 *use string past argument
+	 * @param argument the argument
+	 */
 	public static void readfile(String argument) {
 		String line; // String that holds current file line
 		int count = 0; // count the lines initialize it as 0
