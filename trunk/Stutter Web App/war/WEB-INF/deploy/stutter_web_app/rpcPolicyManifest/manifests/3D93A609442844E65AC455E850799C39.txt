@@ -1,0 +1,2 @@
+serviceClass: edu.towson.cis.client.GreetingService
+path: 89B11FCB57254E0FB5C88ACDA6BF6550.gwt.rpc
