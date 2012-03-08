@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package edu.towson.cis.client;
 
 import edu.towson.cis.shared.FieldVerifier;
@@ -43,9 +46,9 @@ public class Stutter_Web_App implements EntryPoint {
 	public void onModuleLoad() {
 		final Button sendButton = new Button("Send");
 		final TextArea nameField = new TextArea();
-		nameField.setText("software testing is fun fun fun!");
-		nameField.setHeight("300px");
-		nameField.setWidth("500px");
+		nameField.setText("software testing is fun fun fun!");//reset the textarea content
+		nameField.setHeight("300px");//reset the value of width
+		nameField.setWidth("500px");//reset the value of height
 		final Label errorLabel = new Label();
          
 		// We can add style names to widgets
@@ -102,6 +105,7 @@ public class Stutter_Web_App implements EntryPoint {
 			/**
 			 * Fired when the user types in the nameField.
 			 //disaply the enter key*/
+			//disable the functtion for enter key
 			public void onKeyUp(KeyUpEvent event) {
 				//if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					//sendNameToServer();

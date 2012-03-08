@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package edu.towson.cis.shared;
 
 // TODO: Auto-generated Javadoc
