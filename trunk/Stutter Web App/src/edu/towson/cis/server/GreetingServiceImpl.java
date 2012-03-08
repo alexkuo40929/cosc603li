@@ -6,7 +6,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import java.util.StringTokenizer;
 import java.io.*;
 import java.util.regex.*;
-// TODO: Auto-generated Javadoc
 /**
  * The server side implementation of the RPC service.
  */
@@ -14,9 +13,6 @@ import java.util.regex.*;
 public class GreetingServiceImpl extends RemoteServiceServlet implements
 		GreetingService {
 
-	/* (non-Javadoc)
-	 * @see edu.towson.cis.client.GreetingService#greetServer(java.lang.String)
-	 */
 	@SuppressWarnings("null")
 	public String greetServer(String input) throws IllegalArgumentException {
 		// Verify that the input is valid. 
@@ -40,15 +36,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
     	String[]result = null;
     	String[]combo = {"","",""};
     	String last = null;
-        result=input.split("\n");
+        result=input.split("\n");//split function to split the input value 
         int  count=1;
-        for (int i=0; i<result.length; i++){
+       for (int i=0; i<result.length; i++){
     	   
     	    String stringTemp;
+    	    //call compare function
 			combo = compare(result[i], last);
-            last =  combo[1];
-			temp =  combo[2] + "  " + combo[0] ;
+            last = combo[1];
+			temp =  combo[2] + " " + combo[0] ;
 			stringTemp = "the repeat word in line" + Integer.toString(count) + ":" + temp + "<br>";
+			//put output result into a string incresaely to get all the output
 		    stringReturn = stringReturn + stringTemp;
 			count++;
 		}	
@@ -70,15 +68,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;")
 				.replaceAll(">", "&gt;");
 	}
-	
-	/**
-	 * Compare.
-	 *
-	 * @param line the line
-	 * @param last the last
-	 * @return the string[]
-	 */
 	public static String[] compare(String line, String last) {
+		//compare function to compare the each line by line of the code
 		int i = 0;
 		int a2 = 0;
 		String temp = " ";
