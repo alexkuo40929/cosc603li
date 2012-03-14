@@ -42,7 +42,7 @@ public class PropertyCell extends Cell {
 		return rentToCharge;
 	}
 
-	public void playAction() {
+	public boolean playAction(String msg) {
 		Player currentPlayer = null;
 		if(!isAvailable()) {
 			currentPlayer = GameMaster.instance().getCurrentPlayer();
@@ -50,6 +50,14 @@ public class PropertyCell extends Cell {
 				currentPlayer.payRentTo(theOwner, getRent());
 			}
 		}
+		boolean result=false;
+		if(msg!=null)
+	
+		 result = true;
+		else
+		result=false;
+		
+		return result;
 	}
 
 	public void setColorGroup(String colorGroup) {

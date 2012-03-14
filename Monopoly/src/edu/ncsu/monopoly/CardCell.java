@@ -8,7 +8,15 @@ public class CardCell extends Cell {
         this.type = type;
     }
     
-    public void playAction() {
+    public boolean playAction(String msg) {
+		boolean result=false;
+		if(msg!=null)
+	
+		 result = true;
+		else
+		result=false;
+		
+		return result;
     }
     
     public int getType() {
