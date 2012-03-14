@@ -6,7 +6,14 @@ public class FreeParkingCell extends Cell {
 		setName("Free Parking");
 	}
 
-	public void playAction() {
-		return;
+	public boolean playAction(String msg) {
+		boolean result=false;
+		if(msg!=null)
+	
+		 result = true;
+		else
+		result=false;
+		
+		return result;
 	}
 }
