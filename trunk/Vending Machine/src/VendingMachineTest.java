@@ -37,7 +37,12 @@ public class VendingMachineTest {
 		assertNull(machine.getItem(VendingMachine.D_CODE));
 	}
 	
-   
+	//test the throw VendingMachineException to add different item into same slot
+	@Test(expected=VendingMachineException.class)
+	public void testadditem2() {
+		machine.addItem(item, VendingMachine.A_CODE);
+		machine.addItem(item2, VendingMachine.A_CODE);
+	}
 		
 		
    
@@ -53,13 +58,24 @@ public class VendingMachineTest {
 	
 	
 	@Test
-	//test after insert twice money to see is that amount be plugin totally?
+	
 	public void testInsertMoney() {
+	//try to insert 0 into machine,this is the bug
+		machine.insertMoney(0);
+		assertEquals(0, machine.getBalance(), 0.001); 
+		
+	//try to insert amount smaller than 1cent. this is the bug	
+		machine.insertMoney(0.001);
+		assertEquals(0.001, machine.getBalance(), 0.001); 
+		
+	
+		//test after insert twice money to see is that amount be plugin totally?
         machine.insertMoney(3.0);
         machine.insertMoney(1.75);
         assertEquals(4.75, machine.getBalance(), 0.01); 
 	}
 
+	
 	@Test
 	//test the price of the new item is the same as the add to a new item to the machine
 	public void testGetBalance() {
@@ -67,7 +83,11 @@ public class VendingMachineTest {
 		  machine.addItem(item,VendingMachine.A_CODE);
 		  machine.makePurchase(VendingMachine.A_CODE);
 		  assertEquals(2.75,machine.getBalance(),0.001);
+		  // this is the bug like the balance should not be allowed as negtive number
+		  machine.balance=-2;
+		  assertEquals(-2,machine.getBalance(),0.001);
 	}
+
 
 	@Test
 	//this is the test to ass two item into two differetn solt,and 

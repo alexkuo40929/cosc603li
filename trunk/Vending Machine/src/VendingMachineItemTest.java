@@ -13,12 +13,18 @@ import org.junit.Test;
  *
  */
 public class VendingMachineItemTest {
-
-	/**
-	 * @throws java.lang.Exception
-	 */
+	public VendingMachine machine;
+	public VendingMachine machine2;
+	public VendingMachineItem item ;
+	public VendingMachineItem item2 ;
+	public VendingMachineItem item3 ;
 	@Before
 	public void setUp() throws Exception {
+		
+		machine=new VendingMachine();
+		item=new VendingMachineItem("MM", 1.25);
+		item2=new VendingMachineItem(" ",5.00);
+		item3=new VendingMachineItem(null,7.00);
 	}
 
 	/**
@@ -33,7 +39,16 @@ public class VendingMachineItemTest {
 	 */
 	@Test
 	public void testVendingMachineItem() {
-		fail("Not yet implemented");
+		//first test the item name is the same as the "MM"
+		assertSame("MM",item.getName());
+		//second test is about how does if item2 's name is " "is this can be works
+		//i think this is a bug which allow item name as the " ";
+		assertNotNull(item2.getName());
+		//test if it is the Null value in item3 can be seen as the Null or not
+		assertNull(item3.getName());
+		//test if the item name like" ", is this item is the null or not, it is a bug
+		assertNotNull(item2);
+		
 	}
 
 	/**
@@ -41,15 +56,19 @@ public class VendingMachineItemTest {
 	 */
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented");
+		//test get name function works correctly.
+		assertEquals("MM",item.getName());
+		
 	}
+	
 
 	/**
 	 * Test method for {@link VendingMachineItem#getPrice()}.
 	 */
 	@Test
 	public void testGetPrice() {
-		fail("Not yet implemented");
+		assertEquals(1.25,item.getPrice(),0.01);
+	
 	}
 
 }
