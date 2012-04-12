@@ -101,17 +101,28 @@ public class VendingMachineTest {
 		assertEquals(false,machine.makePurchase(VendingMachine.C_CODE));
 		//after purchase, then test how much left 5.0-1.25, to see is the value changed.
 		assertEquals(3.75,machine.getBalance(),0.01);
+		
+		/////////////////////////////////////////////////
+		
 	}
 
-	@Test
-	//testing the return value after make purhase the produce,
-	//compare the change should be eqalis insert money-item.price
-	public void testReturnChange() {
 
+
+	@Test
+	
+	public void testReturnChange() {
+		//testing the return value after make purhase the produce,
+		//compare the change should be eqalis insert money-item.price
 		machine.insertMoney(2.5);
 		machine.addItem(item, VendingMachine.B_CODE);
 		machine.makePurchase(VendingMachine.B_CODE);
 		assertEquals(2.5-item.getPrice(),machine.returnChange(),0.01);
-	}   
+		
+		//this is the test to see if the item2 price(5.0) is bigger than the insert(2.5)
+		//how the returnchange will be , but it will return 2.5 instead of -2.5,it is litte bug
+		
+       
 
+	}   
+ 
 }
