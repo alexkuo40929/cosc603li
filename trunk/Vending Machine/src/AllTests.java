@@ -3,8 +3,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 
-@RunWith(Suite.class)
-@SuiteClasses({ VendingMachineItemTest.class, VendingMachineTest.class })
-public class AllTests {
+//@RunWith(Suite.class)
+//@SuiteClasses({ VendingMachineItemTest.class, VendingMachineTest.class })
+//public class AllTests {
 
-}
+//}

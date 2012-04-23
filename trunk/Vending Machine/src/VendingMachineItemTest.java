@@ -18,6 +18,7 @@ public class VendingMachineItemTest {
 	public VendingMachineItem item ;
 	public VendingMachineItem item2 ;
 	public VendingMachineItem item3 ;
+	public VendingMachineItem item4 ;
 	@Before
 	public void setUp() throws Exception {
 		
@@ -50,6 +51,11 @@ public class VendingMachineItemTest {
 		assertNotNull(item2);
 		
 	}
+    @Test (expected = VendingMachineException.class)
+    public void testVendingMachineItemException(){
+           item4 = new VendingMachineItem("coke", -1.0);  //test if program go through exception when a negative number is inserted as price parameter
+        
+    }
 
 	/**
 	 * Test method for {@link VendingMachineItem#getName()}.

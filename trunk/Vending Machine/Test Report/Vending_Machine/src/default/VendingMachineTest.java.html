@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachineTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Vending Machine (2012-4-23 18:20:54)</a> &gt; <a href="../../index.html" class="el_group">Vending Machine</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">default</a> &gt; <span class="el_source">VendingMachineTest.java</span></div><h1>VendingMachineTest.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+
+<span class="fc" id="L8">public class VendingMachineTest {</span>
+	public VendingMachine machine;
+	public VendingMachine machine2;
+	public VendingMachineItem item ;
+	public VendingMachineItem item2 ;
+	public VendingMachineItem item3 ;
+<span class="fc" id="L14">	double amount=5.00;</span>
+	
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L18">		machine=new VendingMachine();</span>
+<span class="fc" id="L19">		item=new VendingMachineItem(&quot;MM&quot;, 1.25);</span>
+<span class="fc" id="L20">		item2=new VendingMachineItem(&quot;car&quot;,5.00);</span>
+<span class="fc" id="L21">		item3=new VendingMachineItem(&quot;ices&quot;,2.00);</span>
+<span class="fc" id="L22">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L26">	}</span>
+
+	@Test
+	//test add item by checking after added item is that match with the item is the same
+	//as the value we got from that slot by test both slot A and B.
+	public void testAddItem() {
+
+<span class="fc" id="L33">	    machine.addItem(item,VendingMachine.A_CODE);</span>
+<span class="fc" id="L34">	    machine.addItem(item2,VendingMachine.B_CODE);</span>
+	    
+<span class="fc" id="L36">	    machine.addItem(item3,VendingMachine.D_CODE);</span>
+<span class="fc" id="L37">	    assertSame(item, machine.getItem(VendingMachine.A_CODE ));</span>
+<span class="fc" id="L38">	    assertSame(item2, machine.getItem(VendingMachine.B_CODE ));</span>
+	 // test case 2 for the slot C and D to see is that still nothing without add to wrong solt
+<span class="fc" id="L40">	    assertNull(machine.getItem(VendingMachine.C_CODE));</span>
+<span class="fc" id="L41">		assertNotNull(machine.getItem(VendingMachine.D_CODE));</span>
+<span class="fc" id="L42">	}</span>
+	
+	//test the throw VendingMachineException to add different item into same slot
+	@Test(expected=VendingMachineException.class)
+	public void testadditem2() {
+		//test the exception of add some other item to the same slot
+<span class="nc" id="L48">		machine.addItem(item, VendingMachine.A_CODE);</span>
+<span class="nc" id="L49">		machine.addItem(item2, VendingMachine.A_CODE);</span>
+		//machine.addItem(item, VendingMachine.E_CODE);
+	
+<span class="nc" id="L52">	}</span>
+		
+    @Test (expected = VendingMachineException.class)
+    //test invalidate code 
+    public void testAddItem3(){
+<span class="nc" id="L57">            machine.addItem(item, &quot;slotA&quot;);   </span>
+<span class="nc" id="L58">            assertNull(machine.getItem(&quot;slotA&quot;));</span>
+<span class="nc" id="L59">    }	</span>
+			
+
+	@Test
+	// test the remote function. after tie down, we need add a new item into 
+	//slot first and call remote function to check the value in this slot should be null
+	public void testRemoveItem() {
+<span class="fc" id="L66">	    machine.addItem(item,VendingMachine.A_CODE);</span>
+<span class="fc" id="L67">		machine.removeItem(VendingMachine.A_CODE);</span>
+<span class="fc" id="L68">		assertEquals(null,machine.getItem(VendingMachine.A_CODE ) );</span>
+<span class="fc" id="L69">	}</span>
+	@Test(expected=VendingMachineException.class)
+	public void testRemoveItem2(){
+<span class="nc" id="L72">		machine.removeItem(VendingMachine.D_CODE);</span>
+	
+<span class="nc" id="L74">	}</span>
+	
+	
+	@Test
+	
+	public void testInsertMoney() {
+	//try to insert 0 into machine,this is the bug
+<span class="fc" id="L81">		machine.insertMoney(0);</span>
+<span class="fc" id="L82">		assertEquals(0, machine.getBalance(), 0.001); </span>
+		
+	//try to insert amount smaller than 1cent. this is the bug	
+<span class="fc" id="L85">		machine.insertMoney(0.001);</span>
+<span class="fc" id="L86">		assertEquals(0.001, machine.getBalance(), 0.001); </span>
+		
+	
+		//test after insert twice money to see is that amount be plugin totally?
+<span class="fc" id="L90">        machine.insertMoney(3.0);</span>
+<span class="fc" id="L91">        machine.insertMoney(1.75);</span>
+<span class="fc" id="L92">        assertEquals(4.75, machine.getBalance(), 0.01); </span>
+<span class="fc" id="L93">	}</span>
+
+	@Test(expected=VendingMachineException.class)
+	public void testInsertMoney2() {
+<span class="nc" id="L97">     machine.insertMoney(-1.0) ;</span>
+     
+<span class="nc" id="L99">	}</span>
+	@Test
+	//test the price of the new item is the same as the add to a new item to the machine
+	public void testGetBalance() {
+<span class="fc" id="L103">		  machine.balance=4;</span>
+<span class="fc" id="L104">		  machine.addItem(item,VendingMachine.A_CODE);</span>
+<span class="fc" id="L105">		  machine.makePurchase(VendingMachine.A_CODE);</span>
+<span class="fc" id="L106">		  assertEquals(2.75,machine.getBalance(),0.001);</span>
+		  // this is the bug like the balance should not be allowed as negtive number
+<span class="fc" id="L108">		  machine.balance=-2;</span>
+<span class="fc" id="L109">		  assertEquals(-2,machine.getBalance(),0.001);</span>
+<span class="fc" id="L110">	}</span>
+
+
+	@Test
+	//this is the test to ass two item into two differetn solt,and 
+	//to test give 5 dollar to sucessfully purchase the solt is not null.
+	public void testMakePurchase() {
+<span class="fc" id="L117">		machine.addItem(item, VendingMachine.A_CODE);</span>
+<span class="fc" id="L118">		machine.addItem(item2, VendingMachine.B_CODE);</span>
+<span class="fc" id="L119">		machine.balance=3.0;</span>
+<span class="fc" id="L120">		assertEquals(true,machine.makePurchase(VendingMachine.A_CODE));</span>
+		//test case of if purchase on the empty slot
+<span class="fc" id="L122">		assertEquals(false,machine.makePurchase(VendingMachine.C_CODE));</span>
+		//after purchase, then test how much left 5.0-1.25, to see is the value changed.
+<span class="fc" id="L124">		assertEquals(1.75,machine.getBalance(),0.01);</span>
+		
+		/////////////////////////////////////////////////
+		//test purchase in empty false;
+<span class="fc" id="L128">		machine.balance=3.0;</span>
+<span class="fc" id="L129">		assertEquals(false,machine.makePurchase(VendingMachine.D_CODE));</span>
+        //test purchase with enough money
+<span class="fc" id="L131">		machine.addItem(item2, VendingMachine.C_CODE);</span>
+<span class="fc" id="L132">		machine.balance=3.0;</span>
+<span class="fc" id="L133">		assertEquals(false,machine.makePurchase(VendingMachine.C_CODE));</span>
+<span class="fc" id="L134">	}</span>
+
+	@Test
+	
+	public void testReturnChange() {
+		//testing the return value after make purhase the produce,
+		//compare the change should be eqalis insert money-item.price
+<span class="fc" id="L141">		machine.insertMoney(2.5);</span>
+<span class="fc" id="L142">		machine.addItem(item, VendingMachine.B_CODE);</span>
+<span class="fc" id="L143">		machine.makePurchase(VendingMachine.B_CODE);</span>
+<span class="fc" id="L144">		assertEquals(2.5-item.getPrice(),machine.returnChange(),0.01);</span>
+		
+		//this is the test to see if the item2 price(5.0) is bigger than the insert(2.5)
+		//how the returnchange will be , but it will return 2.5 instead of -2.5,it is litte bug
+		
+       
+
+<span class="fc" id="L151">	}   </span>
+ 
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.6.201201232323</span>Vending Machine (2012-4-23 18:20:54)</div></body></html>

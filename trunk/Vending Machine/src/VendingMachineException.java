@@ -14,9 +14,9 @@ public class VendingMachineException extends RuntimeException {
 	/**
 	 * Default constructor
 	 */
-	public VendingMachineException() {
+	//public VendingMachineException() {
 	
-	}
+	//}
 
 	/**
 	 * Constructor with an error message
