@@ -114,9 +114,10 @@ public class CoffeeMaker {
      * @param amtChocolate
      * @return boolean
      */
+    //here is a bug the suger should be returen false as negtive. but it in >; changed!!!
     public boolean addInventory(int amtCoffee, int amtMilk, int amtSugar, int amtChocolate) {
         boolean canAddInventory = true;
-        if(amtCoffee < 0 || amtMilk < 0 || amtSugar > 0 || amtChocolate < 0) {
+        if(amtCoffee < 0 || amtMilk < 0 || amtSugar < 0 || amtChocolate < 0) {
             canAddInventory = false;
         }
         else {
@@ -152,7 +153,8 @@ public class CoffeeMaker {
             canMakeCoffee = false;
         }
         if(canMakeCoffee) {
-	        inventory.setCoffee(inventory.getCoffee() + r.getAmtCoffee());
+        //here is a bug the coffee should be - after purchase, but it is +::changed!!
+	        inventory.setCoffee(inventory.getCoffee() - r.getAmtCoffee());
 	        inventory.setMilk(inventory.getMilk() - r.getAmtMilk());
 	        inventory.setSugar(inventory.getSugar() - r.getAmtSugar());
 	        inventory.setChocolate(inventory.getChocolate() - r.getAmtChocolate());
