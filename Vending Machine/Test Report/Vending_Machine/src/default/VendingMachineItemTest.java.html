@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachineItemTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Vending Machine (2012-4-23 18:20:54)</a> &gt; <a href="../../index.html" class="el_group">Vending Machine</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">default</a> &gt; <span class="el_source">VendingMachineItemTest.java</span></div><h1>VendingMachineItemTest.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * 
+ */
+
+/**
+ * @author cla
+ *
+ */
+<span class="fc" id="L15">public class VendingMachineItemTest {</span>
+	public VendingMachine machine;
+	public VendingMachine machine2;
+	public VendingMachineItem item ;
+	public VendingMachineItem item2 ;
+	public VendingMachineItem item3 ;
+	public VendingMachineItem item4 ;
+	@Before
+	public void setUp() throws Exception {
+		
+<span class="fc" id="L25">		machine=new VendingMachine();</span>
+<span class="fc" id="L26">		item=new VendingMachineItem(&quot;MM&quot;, 1.25);</span>
+<span class="fc" id="L27">		item2=new VendingMachineItem(&quot; &quot;,5.00);</span>
+<span class="fc" id="L28">		item3=new VendingMachineItem(null,7.00);</span>
+<span class="fc" id="L29">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L36">	}</span>
+
+	/**
+	 * Test method for {@link VendingMachineItem#VendingMachineItem(java.lang.String, double)}.
+	 */
+	@Test
+	public void testVendingMachineItem() {
+		//first test the item name is the same as the &quot;MM&quot;
+<span class="fc" id="L44">		assertSame(&quot;MM&quot;,item.getName());</span>
+		//second test is about how does if item2 's name is &quot; &quot;is this can be works
+		//i think this is a bug which allow item name as the &quot; &quot;;
+<span class="fc" id="L47">		assertNotNull(item2.getName());</span>
+		//test if it is the Null value in item3 can be seen as the Null or not
+<span class="fc" id="L49">		assertNull(item3.getName());</span>
+		//test if the item name like&quot; &quot;, is this item is the null or not, it is a bug
+<span class="fc" id="L51">		assertNotNull(item2);</span>
+		
+<span class="fc" id="L53">	}</span>
+    @Test (expected = VendingMachineException.class)
+    public void testVendingMachineItemException(){
+<span class="nc" id="L56">           item4 = new VendingMachineItem(&quot;coke&quot;, -1.0);  //test if program go through exception when a negative number is inserted as price parameter</span>
+        
+<span class="nc" id="L58">    }</span>
+
+	/**
+	 * Test method for {@link VendingMachineItem#getName()}.
+	 */
+	@Test
+	public void testGetName() {
+		//test get name function works correctly.
+<span class="fc" id="L66">		assertEquals(&quot;MM&quot;,item.getName());</span>
+		
+<span class="fc" id="L68">	}</span>
+	
+
+	/**
+	 * Test method for {@link VendingMachineItem#getPrice()}.
+	 */
+	@Test
+	public void testGetPrice() {
+<span class="fc" id="L76">		assertEquals(1.25,item.getPrice(),0.01);</span>
+	
+<span class="fc" id="L78">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.6.201201232323</span>Vending Machine (2012-4-23 18:20:54)</div></body></html>
