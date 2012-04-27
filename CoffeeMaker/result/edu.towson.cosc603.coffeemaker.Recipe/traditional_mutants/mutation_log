@@ -1,0 +1,59 @@
+AOIU_1:24:int_getAmtChocolate():amtChocolate => -amtChocolate
+AOIU_2:30:void_setAmtChocolate(int):amtChocolate => -amtChocolate
+AOIU_3:38:int_getAmtCoffee():amtCoffee => -amtCoffee
+AOIU_4:44:void_setAmtCoffee(int):amtCoffee => -amtCoffee
+AOIU_5:52:int_getAmtMilk():amtMilk => -amtMilk
+AOIU_6:58:void_setAmtMilk(int):amtMilk => -amtMilk
+AOIU_7:66:int_getAmtSugar():amtSugar => -amtSugar
+AOIU_8:72:void_setAmtSugar(int):amtSugar => -amtSugar
+AOIU_9:90:int_getPrice():price => -price
+AOIU_10:96:void_setPrice(int):price => -price
+ROR_1:29:void_setAmtChocolate(int): amtChocolate >= 0  =>   amtChocolate > 0
+ROR_2:29:void_setAmtChocolate(int): amtChocolate >= 0  =>   amtChocolate < 0
+ROR_3:29:void_setAmtChocolate(int): amtChocolate >= 0  =>   amtChocolate <= 0
+ROR_4:29:void_setAmtChocolate(int): amtChocolate >= 0  =>   amtChocolate == 0
+ROR_5:29:void_setAmtChocolate(int): amtChocolate >= 0  =>   amtChocolate != 0
+ROR_6:43:void_setAmtCoffee(int): amtCoffee >= 0  =>   amtCoffee > 0
+ROR_7:43:void_setAmtCoffee(int): amtCoffee >= 0  =>   amtCoffee < 0
+ROR_8:43:void_setAmtCoffee(int): amtCoffee >= 0  =>   amtCoffee <= 0
+ROR_9:43:void_setAmtCoffee(int): amtCoffee >= 0  =>   amtCoffee == 0
+ROR_10:43:void_setAmtCoffee(int): amtCoffee >= 0  =>   amtCoffee != 0
+ROR_11:57:void_setAmtMilk(int): amtMilk >= 0  =>   amtMilk > 0
+ROR_12:57:void_setAmtMilk(int): amtMilk >= 0  =>   amtMilk < 0
+ROR_13:57:void_setAmtMilk(int): amtMilk >= 0  =>   amtMilk <= 0
+ROR_14:57:void_setAmtMilk(int): amtMilk >= 0  =>   amtMilk == 0
+ROR_15:57:void_setAmtMilk(int): amtMilk >= 0  =>   amtMilk != 0
+ROR_16:71:void_setAmtSugar(int): amtSugar >= 0  =>   amtSugar > 0
+ROR_17:71:void_setAmtSugar(int): amtSugar >= 0  =>   amtSugar < 0
+ROR_18:71:void_setAmtSugar(int): amtSugar >= 0  =>   amtSugar <= 0
+ROR_19:71:void_setAmtSugar(int): amtSugar >= 0  =>   amtSugar == 0
+ROR_20:71:void_setAmtSugar(int): amtSugar >= 0  =>   amtSugar != 0
+ROR_21:95:void_setPrice(int): price >= 0  =>   price > 0
+ROR_22:95:void_setPrice(int): price >= 0  =>   price < 0
+ROR_23:95:void_setPrice(int): price >= 0  =>   price <= 0
+ROR_24:95:void_setPrice(int): price >= 0  =>   price == 0
+ROR_25:95:void_setPrice(int): price >= 0  =>   price != 0
+ROR_26:104:boolean_equals(edu.towson.cosc603.coffeemaker.Recipe): r.getName() == null  =>   r.getName() != null
+ROR_27:107:boolean_equals(edu.towson.cosc603.coffeemaker.Recipe): this.name == null  =>   this.name != null
+COI_1:29:void_setAmtChocolate(int): amtChocolate >= 0  =>  !(amtChocolate >= 0)
+COI_2:43:void_setAmtCoffee(int): amtCoffee >= 0  =>  !(amtCoffee >= 0)
+COI_3:57:void_setAmtMilk(int): amtMilk >= 0  =>  !(amtMilk >= 0)
+COI_4:71:void_setAmtSugar(int): amtSugar >= 0  =>  !(amtSugar >= 0)
+COI_5:95:void_setPrice(int): price >= 0  =>  !(price >= 0)
+COI_6:104:boolean_equals(edu.towson.cosc603.coffeemaker.Recipe): r.getName() == null  =>  !(r.getName() == null)
+COI_7:107:boolean_equals(edu.towson.cosc603.coffeemaker.Recipe): this.name == null  =>  !(this.name == null)
+LOI_1:24:int_getAmtChocolate():amtChocolate => ~amtChocolate
+LOI_2:29:void_setAmtChocolate(int):amtChocolate => ~amtChocolate
+LOI_3:30:void_setAmtChocolate(int):amtChocolate => ~amtChocolate
+LOI_4:38:int_getAmtCoffee():amtCoffee => ~amtCoffee
+LOI_5:43:void_setAmtCoffee(int):amtCoffee => ~amtCoffee
+LOI_6:44:void_setAmtCoffee(int):amtCoffee => ~amtCoffee
+LOI_7:52:int_getAmtMilk():amtMilk => ~amtMilk
+LOI_8:57:void_setAmtMilk(int):amtMilk => ~amtMilk
+LOI_9:58:void_setAmtMilk(int):amtMilk => ~amtMilk
+LOI_10:66:int_getAmtSugar():amtSugar => ~amtSugar
+LOI_11:71:void_setAmtSugar(int):amtSugar => ~amtSugar
+LOI_12:72:void_setAmtSugar(int):amtSugar => ~amtSugar
+LOI_13:90:int_getPrice():price => ~price
+LOI_14:95:void_setPrice(int):price => ~price
+LOI_15:96:void_setPrice(int):price => ~price
