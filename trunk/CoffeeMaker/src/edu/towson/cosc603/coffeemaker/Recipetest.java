@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Recipetest extends TestCase{
+	//private new recipses
        private Recipe ray1;
        private Recipe ray2;
 
