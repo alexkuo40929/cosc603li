@@ -9,6 +9,7 @@ public class Inverntorytest extends TestCase {
 	private Recipe ray1;
 
 	public void setUp() {
+		//create a new coffeemaker
 		maker1 = new CoffeeMaker();
 		i = maker1.checkInventory();
     	//create new recipe strawberry
@@ -30,6 +31,7 @@ public class Inverntorytest extends TestCase {
 }
     
     public void testsetCoffee(){
+    	//test if set the value of coffe in0 or negtivanamber the output should return 0;
     	i.setChocolate(-1);
     	assertEquals(0,i.getChocolate());
     	i.setChocolate(0);
@@ -40,6 +42,7 @@ public class Inverntorytest extends TestCase {
     }
     
     public void testsetSugar(){
+    	//test the set sugger in 0 and negative number to see the output result
     	i.setSugar(-1);
     	assertEquals(0,i.getSugar());
     	i.setSugar(0);
@@ -50,6 +53,7 @@ public class Inverntorytest extends TestCase {
     }
     
     public void testsetMilk(){
+    	//test the set milk in 0 and negative number to see the output result
     	i.setMilk(-1);
     	assertEquals(0,i.getMilk());
     	i.setMilk(0);
