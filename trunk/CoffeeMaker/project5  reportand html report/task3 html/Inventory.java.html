@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Inventory.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">edu.towson.cosc603.coffeemaker</a> &gt; <span class="el_source">Inventory.java</span></div><h1>Inventory.java</h1><pre class="source lang-java linenums">package edu.towson.cosc603.coffeemaker;
+
+/**
+ * 
+ * 
+ * Inventory for the coffee maker
+ */
+public class Inventory {
+    
+    private static int coffee;
+    private static int milk;
+    private static int sugar;
+    private static int chocolate;
+    
+<span class="fc" id="L15">    public Inventory() {</span>
+<span class="fc" id="L16">    	setCoffee(15);</span>
+<span class="fc" id="L17">    	setMilk(15);</span>
+<span class="fc" id="L18">    	setSugar(15);</span>
+<span class="fc" id="L19">    	setChocolate(15);</span>
+<span class="fc" id="L20">    }</span>
+    
+    public int getChocolate() {
+<span class="fc" id="L23">        return chocolate;</span>
+    }
+    public void setChocolate(int chocolate) {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">    	if(chocolate &gt;= 0) {</span>
+<span class="fc" id="L27">    		Inventory.chocolate = chocolate;</span>
+    	}
+    	else {
+<span class="fc" id="L30">    		Inventory.chocolate = 0;</span>
+    	}
+        
+<span class="fc" id="L33">    }</span>
+    public int getCoffee() {
+<span class="fc" id="L35">        return coffee;</span>
+    }
+    public void setCoffee(int coffee) {
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">    	if(coffee &gt;= 0) {</span>
+<span class="fc" id="L39">    		Inventory.coffee = coffee;</span>
+    	}
+    	else {
+<span class="nc" id="L42">    		Inventory.coffee = 0;</span>
+    	}
+<span class="fc" id="L44">    }</span>
+    public int getMilk() {
+<span class="fc" id="L46">        return milk;</span>
+    }
+    public void setMilk(int milk) {
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    	if(milk &gt;= 0) {</span>
+<span class="fc" id="L50">    		Inventory.milk = milk;</span>
+    	}
+    	else {
+<span class="fc" id="L53">    		Inventory.milk = 0;</span>
+    	}
+<span class="fc" id="L55">    }</span>
+    public int getSugar() {
+<span class="fc" id="L57">        return sugar;</span>
+    }
+    public void setSugar(int sugar) {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">    	if(sugar &gt;= 0) {</span>
+<span class="fc" id="L61">    		Inventory.sugar = sugar;</span>
+    	}
+    	else {
+<span class="fc" id="L64">    		Inventory.sugar = 0;</span>
+    	}
+<span class="fc" id="L66">    }</span>
+    
+    /**
+     * Returns true if there are enough ingredients to make
+     * the beverage.
+     * @param r
+     * @return boolean
+     */
+    public boolean enoughIngredients(Recipe r) {
+<span class="fc" id="L75">        boolean isEnough = true;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if(Inventory.coffee &lt; r.getAmtCoffee()) {</span>
+<span class="fc" id="L77">            isEnough = false;</span>
+        }
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if(Inventory.milk &lt; r.getAmtMilk()) {</span>
+<span class="fc" id="L80">            isEnough = false;</span>
+        }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if(Inventory.sugar &lt; r.getAmtSugar()) {</span>
+<span class="fc" id="L83">            isEnough = false;</span>
+        }
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if(Inventory.chocolate &lt; r.getAmtChocolate()) {</span>
+<span class="fc" id="L86">            isEnough = false;</span>
+        }
+<span class="fc" id="L88">        return isEnough;</span>
+    }
+    
+    public String toString() {
+<span class="fc" id="L92">    	return &quot;Coffee: &quot; + getCoffee() + &quot;\n&quot; +</span>
+<span class="fc" id="L93">			&quot;Milk: &quot; + getMilk() + &quot;\n&quot; +</span>
+<span class="fc" id="L94">			&quot;Sugar: &quot; + getSugar() + &quot;\n&quot; +</span>
+<span class="fc" id="L95">			&quot;Chocolate: &quot; + getChocolate() + &quot;\n&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.6.201201232323</span>edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</div></body></html>

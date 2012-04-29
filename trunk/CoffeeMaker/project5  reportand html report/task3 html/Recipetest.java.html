@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Recipetest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">edu.towson.cosc603.coffeemaker</a> &gt; <span class="el_source">Recipetest.java</span></div><h1>Recipetest.java</h1><pre class="source lang-java linenums">package edu.towson.cosc603.coffeemaker;
+
+import junit.framework.TestCase;
+
+import org.junit.Before;
+import org.junit.Test;
+
+<span class="fc" id="L8">public class Recipetest extends TestCase{</span>
+	//private new recipses
+       private Recipe ray1;
+       private Recipe ray2;
+
+
+        @Before
+        public void setUp() throws Exception {
+<span class="fc" id="L16">            ray1 = new Recipe();</span>
+<span class="fc" id="L17">            ray2 = new Recipe();</span>
+<span class="fc" id="L18">        }</span>
+
+        @Test
+        public void testSetAmtCoffee1() {
+<span class="fc" id="L22">                ray1.setAmtCoffee(-1);</span>
+<span class="fc" id="L23">                assertEquals(0, ray1.getAmtCoffee());</span>
+<span class="fc" id="L24">                ray1.setAmtCoffee(0);</span>
+<span class="fc" id="L25">                assertEquals(0, ray1.getAmtCoffee());</span>
+<span class="fc" id="L26">                ray1.setAmtCoffee(3);</span>
+<span class="fc" id="L27">                assertEquals(3, ray1.getAmtCoffee());</span>
+<span class="fc" id="L28">        }</span>
+
+        @Test
+        public void testSetAmtMilk1() {
+<span class="fc" id="L32">                ray1.setAmtMilk(-1);</span>
+<span class="fc" id="L33">                assertEquals(0, ray1.getAmtMilk());</span>
+<span class="fc" id="L34">                ray1.setAmtMilk(0);</span>
+<span class="fc" id="L35">                assertEquals(0, ray1.getAmtMilk());</span>
+<span class="fc" id="L36">                ray1.setAmtMilk(1);</span>
+<span class="fc" id="L37">                assertEquals(1, ray1.getAmtMilk());</span>
+<span class="fc" id="L38">        }</span>
+
+        @Test
+        public void testSetAmtSugar1() {
+<span class="fc" id="L42">                ray1.setAmtSugar(-1);</span>
+<span class="fc" id="L43">                assertEquals(0, ray1.getAmtSugar());</span>
+<span class="fc" id="L44">                ray1.setAmtSugar(0);</span>
+<span class="fc" id="L45">                assertEquals(0, ray1.getAmtSugar());</span>
+<span class="fc" id="L46">                ray1.setAmtSugar(1);</span>
+<span class="fc" id="L47">                assertEquals(1, ray1.getAmtSugar());</span>
+<span class="fc" id="L48">        }</span>
+        
+        @Test
+        public void testSetAmtChocolate1() {
+<span class="fc" id="L52">                ray1.setAmtChocolate(-1);</span>
+<span class="fc" id="L53">                assertEquals(0, ray1.getAmtChocolate());</span>
+<span class="fc" id="L54">                ray1.setAmtChocolate(0);</span>
+<span class="fc" id="L55">                assertEquals(0, ray1.getAmtChocolate());</span>
+<span class="fc" id="L56">                ray1.setAmtChocolate(10);</span>
+<span class="fc" id="L57">                assertEquals(10, ray1.getAmtChocolate());</span>
+<span class="fc" id="L58">        }</span>
+
+        @Test
+        public void testSetPrice1() {
+<span class="fc" id="L62">                ray1.setPrice(-1);</span>
+<span class="fc" id="L63">                assertEquals(0, ray1.getPrice());</span>
+<span class="fc" id="L64">                ray1.setPrice(50);</span>
+<span class="fc" id="L65">                assertEquals(50, ray1.getPrice());</span>
+<span class="fc" id="L66">        }</span>
+
+        @Test
+        public void testSetName1() {
+<span class="fc" id="L70">                ray1.setName(&quot;Coffee&quot;);</span>
+<span class="fc" id="L71">                assertEquals(&quot;Coffee&quot;, ray1.getName());</span>
+<span class="fc" id="L72">        }</span>
+
+        @Test
+        public void testEquals1() {
+        	    
+
+<span class="fc" id="L78">                ray2.setName(&quot;Coffee&quot;);</span>
+<span class="fc" id="L79">                assertFalse(ray1.equals(ray2));</span>
+
+<span class="fc" id="L81">                ray1.setName(&quot;Coffee&quot;);</span>
+<span class="fc" id="L82">                assertTrue(ray1.equals(ray2));</span>
+
+<span class="fc" id="L84">                ray1.setName(&quot;Cafe Mocha&quot;);</span>
+<span class="fc" id="L85">                assertFalse(ray1.equals(ray2));</span>
+<span class="fc" id="L86">        }</span>
+
+        @Test
+        public void testToString1() {
+<span class="fc" id="L90">                ray1.setName(&quot;Coffee&quot;);</span>
+<span class="fc" id="L91">                assertEquals(&quot;Coffee&quot;, ray1.toString());</span>
+<span class="fc" id="L92">        }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.6.201201232323</span>edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</div></body></html>

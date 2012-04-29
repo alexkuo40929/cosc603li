@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Recipe.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">edu.towson.cosc603.coffeemaker</a> &gt; <span class="el_source">Recipe.java</span></div><h1>Recipe.java</h1><pre class="source lang-java linenums">package edu.towson.cosc603.coffeemaker;
+
+/**
+ *
+ *
+ * Recipe object for the coffee maker
+ */
+<span class="fc" id="L8">public class Recipe {</span>
+    private String name;
+    private int price;
+    private int amtCoffee;
+    private int amtMilk;
+    private int amtSugar;
+    private int amtChocolate;
+
+    public int getAmtChocolate() {
+<span class="fc" id="L17">        return amtChocolate;</span>
+    }
+    public void setAmtChocolate(int amtChocolate) {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">    	if(amtChocolate &gt;= 0) {</span>
+<span class="fc" id="L21">    		this.amtChocolate = amtChocolate;</span>
+    	}
+    	else {
+<span class="fc" id="L24">    		this.amtChocolate = 0;</span>
+    	}
+<span class="fc" id="L26">    }</span>
+    public int getAmtCoffee() {
+<span class="fc" id="L28">        return amtCoffee;</span>
+    }
+    public void setAmtCoffee(int amtCoffee) {
+<span class="fc bfc" id="L31" title="All 2 branches covered.">    	if(amtCoffee &gt;= 0) {</span>
+<span class="fc" id="L32">    		this.amtCoffee = amtCoffee;</span>
+    	}
+    	else {
+<span class="fc" id="L35">    		this.amtCoffee = 0;</span>
+    	}
+<span class="fc" id="L37">    }</span>
+    public int getAmtMilk() {
+<span class="fc" id="L39">        return amtMilk;</span>
+    }
+    public void setAmtMilk(int amtMilk) {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    	if(amtMilk &gt;= 0) {</span>
+<span class="fc" id="L43">    		this.amtMilk = amtMilk;</span>
+    	}
+    	else {
+<span class="fc" id="L46">    		this.amtMilk = 0;</span>
+    	}
+<span class="fc" id="L48">    }</span>
+    public int getAmtSugar() {
+<span class="fc" id="L50">        return amtSugar;</span>
+    }
+    public void setAmtSugar(int amtSugar) {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    	if(amtSugar &gt;= 0) {</span>
+<span class="fc" id="L54">    		this.amtSugar = amtSugar;</span>
+    	}
+    	else {
+<span class="fc" id="L57">    		this.amtSugar = 0;</span>
+    	}
+<span class="fc" id="L59">    }</span>
+    public String getName() {
+<span class="fc" id="L61">        return name;</span>
+    }
+    public void setName(String name) {
+<span class="fc" id="L64">        this.name = name;</span>
+<span class="fc" id="L65">    }</span>
+    public int getPrice() {
+<span class="fc" id="L67">        return price;</span>
+    }
+    public void setPrice(int price) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">    	if(price &gt;= 0) {</span>
+<span class="fc" id="L71">    		this.price = price;</span>
+    	}
+    	else {
+<span class="fc" id="L74">    		this.price = 0;</span>
+    	}
+<span class="fc" id="L76">    }</span>
+    public boolean equals(Recipe r) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if(r.getName() == null) {</span>
+<span class="fc" id="L79">	    	return false;</span>
+    	}
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if(this.name == null) {</span>
+<span class="fc" id="L82">        	return false;</span>
+        }
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if((this.name).equals(r.getName())) {</span>
+<span class="fc" id="L85">            return true;</span>
+        }
+<span class="fc" id="L87">        return false;</span>
+    }
+    public String toString() {
+<span class="fc" id="L90">    	return name;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.6.201201232323</span>edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</div></body></html>
