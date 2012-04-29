@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>CoffeeMakerTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">edu.towson.cosc603.coffeemaker</a> &gt; <span class="el_source">CoffeeMakerTest.java</span></div><h1>CoffeeMakerTest.java</h1><pre class="source lang-java linenums">package edu.towson.cosc603.coffeemaker;
+
+import junit.framework.TestCase;
+
+/**
+ *
+ */
+<span class="fc" id="L8">public class CoffeeMakerTest extends TestCase {</span>
+	//set the initial value and give some recipe 
+	private CoffeeMaker maker1;
+	private Inventory i;
+	private Recipe ray1;
+	private Recipe ray2;
+	private Recipe ray3;
+	private Recipe ray4;
+
+	public void setUp() {
+<span class="fc" id="L18">		maker1 = new CoffeeMaker();</span>
+<span class="fc" id="L19">		i = maker1.checkInventory();</span>
+
+<span class="fc" id="L21">		ray1 = new Recipe();</span>
+<span class="fc" id="L22">		ray1.setName(&quot;Coffee&quot;);</span>
+<span class="fc" id="L23">		ray1.setPrice(50);</span>
+<span class="fc" id="L24">		ray1.setAmtCoffee(6);</span>
+<span class="fc" id="L25">		ray1.setAmtMilk(1);</span>
+<span class="fc" id="L26">		ray1.setAmtSugar(1);</span>
+<span class="fc" id="L27">		ray1.setAmtChocolate(0);</span>
+		//create new recipe icey
+<span class="fc" id="L29">        ray2 = new Recipe();</span>
+<span class="fc" id="L30">        ray2.setName(&quot; icey&quot;);</span>
+<span class="fc" id="L31">        ray2.setPrice(25);</span>
+<span class="fc" id="L32">        ray2.setAmtCoffee(6);</span>
+<span class="fc" id="L33">        ray2.setAmtMilk(2);</span>
+<span class="fc" id="L34">        ray2.setAmtSugar(2);</span>
+<span class="fc" id="L35">        ray2.setAmtChocolate(3);</span>
+		//create new recipe grenntea
+<span class="fc" id="L37">        ray3 = new Recipe();</span>
+<span class="fc" id="L38">        ray3.setName(&quot;grenntea&quot;);</span>
+<span class="fc" id="L39">        ray3.setPrice(35);</span>
+<span class="fc" id="L40">        ray3.setAmtCoffee(5);</span>
+<span class="fc" id="L41">        ray3.setAmtMilk(2);</span>
+<span class="fc" id="L42">        ray3.setAmtSugar(2);</span>
+<span class="fc" id="L43">        ray3.setAmtChocolate(2);</span>
+    	//create new recipe strawberry
+<span class="fc" id="L45">        ray4 = new Recipe();</span>
+<span class="fc" id="L46">        ray4.setName(&quot;strawberry&quot;);</span>
+<span class="fc" id="L47">        ray4.setPrice(40);</span>
+<span class="fc" id="L48">        ray4.setAmtCoffee(2);</span>
+<span class="fc" id="L49">        ray4.setAmtMilk(2);</span>
+<span class="fc" id="L50">        ray4.setAmtSugar(2);</span>
+<span class="fc" id="L51">        ray4.setAmtChocolate(4);</span>
+<span class="fc" id="L52">	}</span>
+
+	public void testAddRecipe1() {
+<span class="fc" id="L55">		assertTrue(maker1.addRecipe(ray1));</span>
+<span class="fc" id="L56">	}</span>
+
+	public void testDeleteRecipe1() {
+<span class="fc" id="L59">		maker1.addRecipe(ray1);</span>
+<span class="fc" id="L60">		assertTrue(maker1.deleteRecipe(ray1));</span>
+<span class="fc" id="L61">	}</span>
+
+	public void testEditRecipe1() {
+<span class="fc" id="L64">		maker1.addRecipe(ray1);</span>
+<span class="fc" id="L65">		Recipe newRecipe = new Recipe();</span>
+<span class="fc" id="L66">		newRecipe = ray1;</span>
+<span class="fc" id="L67">		newRecipe.setAmtSugar(2);</span>
+<span class="fc" id="L68">		assertTrue(maker1.editRecipe(ray1, newRecipe));</span>
+<span class="fc" id="L69">	}</span>
+	
+    public void testMakeCoffee1() {
+<span class="fc" id="L72">        maker1.addRecipe(ray2);</span>
+        //here we can find the bug of inverntary of coffe is increasing ,it should reduce
+<span class="fc" id="L74">        assertEquals(75, maker1.makeCoffee(ray2, 100));</span>
+<span class="fc" id="L75">        assertEquals(9, maker1.checkInventory().getCoffee());</span>
+<span class="fc" id="L76">        assertEquals(13, maker1.checkInventory().getMilk());</span>
+<span class="fc" id="L77">        assertEquals(13, maker1.checkInventory().getSugar());</span>
+<span class="fc" id="L78">        assertEquals(12, maker1.checkInventory().getChocolate());</span>
+        
+<span class="fc" id="L80">}</span>
+    public void testMakeCoffee2()
+    {
+            //test input as 0 to see is that return the 0
+<span class="fc" id="L84">            assertEquals(0, maker1.makeCoffee(ray4, 0));</span>
+            //test if the insert money is less than the money of coffe
+<span class="fc" id="L86">            assertEquals(30, maker1.makeCoffee(ray4, 30));</span>
+<span class="fc" id="L87">    }</span>
+    /**
+     * Test adding coffee to Coffee Maker.
+     */
+
+    public void testAddInventory()
+    {
+    	//test add inventary to see all works as positive number and value increased
+<span class="fc" id="L95">            assertTrue(maker1.addInventory(5, 1, 2, 3));</span>
+<span class="fc" id="L96">            assertEquals(20, maker1.checkInventory().getCoffee());</span>
+<span class="fc" id="L97">            assertEquals(16, maker1.checkInventory().getMilk());</span>
+<span class="fc" id="L98">            assertEquals(17, maker1.checkInventory().getSugar());</span>
+<span class="fc" id="L99">            assertEquals(18, maker1.checkInventory().getChocolate());</span>
+<span class="fc" id="L100">    }</span>
+   
+    public void testAddInventory2()
+    {
+            //false case if it is inserting negtive numbers
+<span class="fc" id="L105">            assertFalse(maker1.addInventory(-1, 0, 0, 0));</span>
+<span class="fc" id="L106">            assertFalse(maker1.addInventory(0, -1, 0, 0));</span>
+<span class="fc" id="L107">            assertFalse(maker1.addInventory(0, 0, -1, 0));</span>
+<span class="fc" id="L108">            assertFalse(maker1.addInventory(0, 0, 0, -1));</span>
+            
+<span class="fc" id="L110">    }</span>
+    public void testGetRecipeForName() {
+    	//compare the recipt set name function to see can we recive the correc name.
+<span class="fc" id="L113">        maker1.addRecipe(ray4);</span>
+<span class="fc" id="L114">        assertEquals(&quot;strawberry&quot;, maker1.getRecipeForName(&quot;strawberry&quot;).getName());</span>
+<span class="fc" id="L115">}</span>
+    public void testRecipeArray() {
+    	//to test how the array store the recipe 
+<span class="fc" id="L118">    	   maker1.addRecipe(ray1);</span>
+<span class="fc" id="L119">           maker1.addRecipe(ray2);</span>
+     
+<span class="fc" id="L121">           Recipe[] raytesting = {ray1,ray2,};</span>
+<span class="fc" id="L122">           assertEquals(raytesting [0], maker1.getRecipes()[3]);               </span>
+<span class="fc" id="L123">           assertEquals(raytesting [1], maker1.getRecipes()[2]);</span>
+
+<span class="fc" id="L125">    }    </span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.5.6.201201232323</span>edu.towson.cosc603.coffeemaker (2012-4-28 15:03:23)</div></body></html>
