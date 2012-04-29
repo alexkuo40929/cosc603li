@@ -54,12 +54,21 @@ public class CoffeeMakerTest extends TestCase {
 	public void testAddRecipe1() {
 		assertTrue(maker1.addRecipe(ray1));
 	}
+	public void testAddRecipe2() {
+		assertTrue(maker1.addRecipe(ray1));
+		assertTrue(maker1.addRecipe(ray2));
+		assertTrue(maker1.addRecipe(ray3));
+		assertTrue(maker1.addRecipe(ray4));
+	}
 
 	public void testDeleteRecipe1() {
 		maker1.addRecipe(ray1);
 		assertTrue(maker1.deleteRecipe(ray1));
 	}
-
+	public void testDeleteRecipe2() {
+		maker1.addRecipe(ray1);
+		assertFalse(maker1.deleteRecipe(ray2));
+	}
 	public void testEditRecipe1() {
 		maker1.addRecipe(ray1);
 		Recipe newRecipe = new Recipe();
